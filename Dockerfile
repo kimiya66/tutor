@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Harald Lang <harald.lang@in.tum.de>
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -6,7 +6,9 @@ RUN apt-get -q -y update
 RUN apt-get -q -y upgrade
 RUN apt-get -q -y install curl
 
-RUN curl -L https://get.rvm.io | bash -s stable --ruby
+#RUN curl -L https://get.rvm.io | bash -s stable --ruby
+#because of rvm issue 4068 on github
+RUN curl -L https://get.rvm.io | grep -v __rvm_print_headline | bash -s stable --ruby
 
 #RUN mkdir /var/run/sshd
 #RUN echo 'root:password' > /root/passwdfile
@@ -19,17 +21,20 @@ RUN apt-get -q -y install git-core
 #RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get -y install software-properties-common python-software-properties python g++ make vim
-RUN add-apt-repository -y ppa:chris-lea/node.js
+#RUN add-apt-repository -y ppa:chris-lea/node.js
+#not available for 16.04, install normal nodejs instead
 RUN apt-get update
-RUN apt-get -y install nodejs
+RUN apt-get -y install nodejs nodejs-legacy npm
+#added
 RUN npm install -g bower
-#RUN apt-get -y install sudo openssh-server
 RUN apt-get -q -y install busybox-syslogd tmux
+
+RUN apt-get -y install postfix openssh-server sudo ruby-dev libsqlite3-dev
 
 # Install user
 RUN useradd -m user
 
-# Install source
+## Install source
 ADD . /src
 
 #EXPOSE 22 8080
