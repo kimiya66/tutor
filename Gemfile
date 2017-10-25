@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-#gem 'rails', '4.0.0'
+
 #kimia: I changed the version of rails if it wouldnt help, I will rechange it to the first 
 gem 'rails', '5.1.4'
 
@@ -9,14 +9,14 @@ gem 'rails', '5.1.4'
 gem 'sqlite3'
 
 # Use SCSS for stylesheets
-#gem 'sass-rails', '~> 4.0.0'
+
 gem 'sass-rails', '~> 5.1.4'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-#gem 'coffee-rails', '~> 4.0.0'
+
 gem 'coffee-rails', '~> 5.1.4'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
