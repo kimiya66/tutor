@@ -112,7 +112,7 @@ class UsersController < ApplicationController
     def user_params
  
       params.require(:user).permit(:email,:firstname,:lastname,:magictoken,:password,:password_confirmation,:role)
-    end
+   
     
     #for datetime error test this condition
          
