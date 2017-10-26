@@ -161,7 +161,8 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   chronic
   cocoon
-  coffee-rails (~> 4.0.0)
+  #coffee-rails (~> 4.0.0)
+coffee-rails (~> 5.1.4)
   devise
   exception_notification!
   haml-rails
@@ -169,8 +170,10 @@ DEPENDENCIES
   jquery-rails
   mongrel (>= 0.0.0.beta)
   prawn
-  rails (= 4.0.0)
-  sass-rails (~> 4.0.0)
+  #rails (= 4.0.0)
+ rails (= 5.1.4)
+  #sass-rails (~> 4.0.0)
+ sass-rails (~> 5.1.4)
   sdoc
   sqlite3
   switch_user
