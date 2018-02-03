@@ -21,7 +21,8 @@ class WeeksController < ApplicationController
   # POST /weeks
   # POST /weeks.jso 
  def create
-    @week = Week.new(week_params.merge(course_id: @course.id))
+    #@week = Week.new(week_params.merge(course_id: @course.id))
+    @week = Week.new(week_params)
     if @week.save
       redirect_to '/weeks'
     else
@@ -55,5 +56,14 @@ class WeeksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def week_params
       params.require(:week).permit(:start,:course_id)
+       if @week_params[:start] != nil
+        #@week_params[:start] = Date.new(@week_params[':start(1i)'].to_i, @week_params[':start(2i)'].to_i, @week_params['start(3i)'].to_i)
+        @week_params[:start] = Date.parse(@week_params[:start]).to_s
+       # if @start != nil  
+       #@date = Date.new(@date(1i), @date(2i), @date(3i))
+      #  @start = Date._parse(@start).to_s
+       #@week_params[:start] = Date._parse(@week_params[:start]).to_s
+       end
+
     end
 end
